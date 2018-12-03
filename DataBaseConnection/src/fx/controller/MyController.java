@@ -57,9 +57,6 @@ public class MyController implements Initializable {
 		User user = new User(S_txtUser.getText(), S_txtPassWD.getText(), S_txtDB.getText());
 		
 		new JDBCBind().createDatabase(user.getDbName());
-		
-		System.out.println(user);
-		
 		new SQLMapper().insertDatabase(user);
 		
 	}
