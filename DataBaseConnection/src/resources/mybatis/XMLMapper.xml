@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.mybatis.persistence.XMLMapper">
+	
+	<insert id="userInsert" parameterType="user">
+		INSERT INTO user(host, user, password, ssl_cipher, x509_issuer, x509_subject, authentication_string)
+		VALUES('localhost', '${userName}', password('${passWD}'), 0, 0, 0, '')
+	</insert>
+	
+	<insert id="dbInsert" parameterType="user">
+		INSERT INTO db(Host, Db, User) VALUES('localhost', '${dbName}', '${userName}')
+	</insert>
+	
+	<update id="authorityUpdate" parameterType="user">
+		grant all privileges ON ${dbName}.* to ${userName}@localhost identified by '${passWD}' 
+	</update>
+	
+	<update id="dbUpdate">
+		FLUSH PRIVILEGES
+	</update>
+	
+</mapper>

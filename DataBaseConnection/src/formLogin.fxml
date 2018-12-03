@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="212.0" prefWidth="283.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.controller.MyController">
+   <children>
+      <SplitPane dividerPositions="0.31833910034602075" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="211.0" prefWidth="291.0">
+         <items>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="209.0" prefWidth="83.0">
+               <children>
+                  <VBox alignment="CENTER" layoutY="-5.0" prefHeight="219.0" prefWidth="91.0" spacing="10.0">
+                     <children>
+                        <Button fx:id="btnSign_In" mnemonicParsing="false" prefHeight="37.0" prefWidth="68.0" text="Sign In" />
+                        <Button fx:id="btnSign_Up" mnemonicParsing="false" prefHeight="37.0" prefWidth="68.0" text="Sign Up" />
+                        <Button fx:id="btnCancel" mnemonicParsing="false" prefHeight="37.0" prefWidth="68.0" text="Cancel" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <StackPane fx:id="stackPane" prefHeight="209.0" prefWidth="115.0">
+               <children>
+                  <BorderPane fx:id="signupPane" prefHeight="209.0" prefWidth="119.0" visible="false">
+                     <bottom>
+                        <HBox alignment="CENTER" prefHeight="39.0" prefWidth="180.0" spacing="20.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Button fx:id="S_btnSave" mnemonicParsing="false" prefHeight="23.0" prefWidth="68.0" text="Save" />
+                              <Button fx:id="S_btnReset" mnemonicParsing="false" prefHeight="23.0" prefWidth="68.0" text="Reset" />
+                           </children>
+                        </HBox>
+                     </bottom>
+                     <center>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label layoutX="14.0" layoutY="39.0" text="User" />
+                              <Label layoutX="5.0" layoutY="69.0" text="PassWD" />
+                              <TextField fx:id="S_txtUser" layoutX="58.0" layoutY="35.0" prefHeight="23.0" prefWidth="110.0" />
+                              <TextField fx:id="S_txtPassWD" layoutX="58.0" layoutY="65.0" prefHeight="23.0" prefWidth="110.0" />
+                              <Label layoutX="20.0" layoutY="101.0" text="DB" />
+                              <TextField fx:id="S_txtDB" layoutX="58.0" layoutY="97.0" prefHeight="23.0" prefWidth="110.0" />
+                           </children>
+                        </AnchorPane>
+                     </center>
+                     <top>
+                        <AnchorPane prefHeight="33.0" prefWidth="180.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label layoutX="69.0" layoutY="1.0" text="Sign Up">
+                                 <font>
+                                    <Font name="Gigi" size="17.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </top>
+                  </BorderPane>
+                  <BorderPane fx:id="loginPane" prefHeight="200.0" prefWidth="180.0">
+                     <bottom>
+                        <HBox alignment="CENTER" prefHeight="39.0" prefWidth="180.0" spacing="20.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Button fx:id="btnConnect" mnemonicParsing="false" prefHeight="26.0" prefWidth="76.0" text="Connect" />
+                              <Button fx:id="btnReset" mnemonicParsing="false" prefHeight="23.0" prefWidth="76.0" text="Reset" />
+                           </children>
+                        </HBox>
+                     </bottom>
+                     <center>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label layoutX="14.0" layoutY="39.0" text="User" />
+                              <Label layoutX="5.0" layoutY="75.0" text="PassWD" />
+                              <TextField fx:id="L_txtUser" layoutX="58.0" layoutY="35.0" prefHeight="23.0" prefWidth="110.0" />
+                              <TextField fx:id="L_txtPassWD" layoutX="58.0" layoutY="71.0" prefHeight="23.0" prefWidth="110.0" />
+                           </children>
+                        </AnchorPane>
+                     </center>
+                     <top>
+                        <AnchorPane prefHeight="33.0" prefWidth="180.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label layoutX="69.0" layoutY="1.0" text="Login">
+                                 <font>
+                                    <Font name="Gigi" size="17.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </top>
+                  </BorderPane>
+               </children>
+            </StackPane>
+         </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
