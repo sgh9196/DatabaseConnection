@@ -66,7 +66,7 @@
                         <HBox alignment="CENTER" prefHeight="39.0" prefWidth="180.0" spacing="20.0" BorderPane.alignment="CENTER">
                            <children>
                               <Button fx:id="btnConnect" mnemonicParsing="false" prefHeight="26.0" prefWidth="76.0" text="Connect" />
-                              <Button fx:id="btnReset" mnemonicParsing="false" prefHeight="23.0" prefWidth="76.0" text="Reset" />
+                              <Button fx:id="L_btnReset" mnemonicParsing="false" prefHeight="23.0" prefWidth="76.0" text="Reset" />
                            </children>
                         </HBox>
                      </bottom>

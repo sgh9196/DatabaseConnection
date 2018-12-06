@@ -44,16 +44,18 @@ public class MyController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		loginPane.setVisible(false);
-
-		btnSign_In.setOnAction(event -> handleBtnSignInAction(event));
-		btnSign_Up.setOnAction(event -> handleBtnSignUpAction(event));
-		btnCancel.setOnAction(event -> System.exit(0));
-		
-		
-		S_btnIdCheck.setOnAction(event -> handleBtnIdCheckAction(event));
-		S_btnSave.setOnAction(event -> handleBtnSaveAction(event));
-		
+		try {
+	
+			btnSign_In.setOnAction(event -> handleBtnSignInAction(event));
+			btnSign_Up.setOnAction(event -> handleBtnSignUpAction(event));
+			btnCancel.setOnAction(event -> System.exit(0));
+			L_btnReset.setOnAction(event -> handleLBtnResetAction(event));
+			
+			S_btnIdCheck.setOnAction(event -> handleBtnIdCheckAction(event));
+			S_btnSave.setOnAction(event -> handleBtnSaveAction(event));
+			S_btnReset.setOnAction(event -> handleSBtnResetAction(event));
+			
+		} catch(Exception e) {}
 	}
 	
 	
@@ -109,6 +111,17 @@ public class MyController implements Initializable {
 		signupPane.setVisible(true);
 	}
 
+	public void handleLBtnResetAction(ActionEvent event) {
+		L_txtUser.setText("");
+		L_txtPassWD.setText("");
+	}
+	
+	public void handleSBtnResetAction(ActionEvent event) {
+		S_txtUser.setText("");
+		S_txtPassWD.setText("");
+		S_txtDB.setText("");
+	}
+	
 	public void MSG(String infoMessage, String titleBar) {
 		JOptionPane.showMessageDialog(null, infoMessage, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
 	}
