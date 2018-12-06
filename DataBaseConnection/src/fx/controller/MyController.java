@@ -3,6 +3,8 @@ package fx.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
 import org.mybatis.domain.User;
 
 import driving.main.JDBCBind;
@@ -33,10 +35,12 @@ public class MyController implements Initializable {
 	@FXML private TextField S_txtUser;
 	@FXML private TextField S_txtPassWD;
 	@FXML private TextField S_txtDB;
+	@FXML private Button S_btnIdCheck;
 	@FXML private Button S_btnSave;
 	@FXML private Button S_btnReset;
 
-
+	private boolean idCheck = false;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -46,6 +50,8 @@ public class MyController implements Initializable {
 		btnSign_Up.setOnAction(event -> handleBtnSignUpAction(event));
 		btnCancel.setOnAction(event -> System.exit(0));
 		
+		
+		S_btnIdCheck.setOnAction(event -> handleBtnIdCheckAction(event));
 		S_btnSave.setOnAction(event -> handleBtnSaveAction(event));
 		
 	}
@@ -56,8 +62,38 @@ public class MyController implements Initializable {
 		
 		User user = new User(S_txtUser.getText(), S_txtPassWD.getText(), S_txtDB.getText());
 		
-		new JDBCBind().createDatabase(user.getDbName());
-		new SQLMapper().insertDatabase(user);
+		SQLMapper sqlMapper = new SQLMapper();
+		
+		String name = user.getUserName();
+		String pw = user.getPassWD();
+		String db = user.getDbName();
+		
+		if(name.equals("") || pw.equals("") || db.equals("")) {
+			MSG("모든 정보를 입력해주세요.", "경고");
+		}
+		else if(idCheck) {
+			new JDBCBind().createDatabase(user.getDbName());
+			sqlMapper.insertDatabase(user);
+			MSG("Database 생성 완료", "확인");
+		}
+		
+	}
+	
+	/* User Overlap Check */
+	public void handleBtnIdCheckAction(ActionEvent event) {
+		
+		int result = new SQLMapper().selectIdCheck(S_txtUser.getText()); 
+		
+		if(result>0) { 
+			S_txtUser.setText(""); 
+			idCheck = false;
+			MSG("이미 등록 된 [User]입니다.", "경고");
+		}
+		else { 
+			S_txtUser.setDisable(true);
+			idCheck = true; 
+			MSG("사용 가능한 [User]입니다.", "확인"); 
+		}
 		
 	}
 	
@@ -73,4 +109,8 @@ public class MyController implements Initializable {
 		signupPane.setVisible(true);
 	}
 
+	public void MSG(String infoMessage, String titleBar) {
+		JOptionPane.showMessageDialog(null, infoMessage, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
+	}
+	
 }

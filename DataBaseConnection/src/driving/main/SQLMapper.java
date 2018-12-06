@@ -37,6 +37,24 @@ public class SQLMapper {
 		sqlSession.close();
 	}
 	
+	public int selectIdCheck(String userName) {
+		
+		int resultSQL = 0;
+		
+		try {
+			
+			transactionOpen();
+			resultSQL = sqlSession.selectOne(parameter + "XMLMapper.idCheckSelect", userName);
+			transactionClose();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return resultSQL;
+		
+	}
+	
 	/* Database Defualt Infomation Insert */
 	public void insertDatabase(User user) {
 		
@@ -48,9 +66,11 @@ public class SQLMapper {
 			sqlSession.insert(parameter + "XMLMapper.dbInsert",  user);
 			sqlSession.update(parameter + "XMLMapper.authorityUpdate",  user);
 			sqlSession.update(parameter + "XMLMapper.dbUpdate");
+			
 			sqlSession.commit();
 			
 			transactionClose();
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

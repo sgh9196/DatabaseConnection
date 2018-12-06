@@ -5,6 +5,7 @@
 
 <mapper namespace="org.mybatis.persistence.XMLMapper">
 	
+	
 	<insert id="userInsert" parameterType="user">
 		INSERT INTO user(host, user, password, ssl_cipher, x509_issuer, x509_subject, authentication_string)
 		VALUES('localhost', '${userName}', password('${passWD}'), 0, 0, 0, '')
@@ -13,13 +14,18 @@
 	<insert id="dbInsert" parameterType="user">
 		INSERT INTO db(Host, Db, User) VALUES('localhost', '${dbName}', '${userName}')
 	</insert>
-	
+
 	<update id="authorityUpdate" parameterType="user">
 		grant all privileges ON ${dbName}.* to ${userName}@localhost identified by '${passWD}' 
 	</update>
-	
+
 	<update id="dbUpdate">
 		FLUSH PRIVILEGES
 	</update>
+	
+	<select id="idCheckSelect" parameterType="string" resultType="int">
+		SELECT Count(*) FROM user WHERE User = #{userName}
+	</select>
+	
 	
 </mapper>
