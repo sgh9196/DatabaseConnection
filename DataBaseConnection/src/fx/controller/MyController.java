@@ -46,21 +46,48 @@ public class MyController implements Initializable {
 
 		try {
 	
-			btnSign_In.setOnAction(event -> handleBtnSignInAction(event));
-			btnSign_Up.setOnAction(event -> handleBtnSignUpAction(event));
+			btnSign_In.setOnAction(event -> handle_S_BtnSignInAction(event));
+			btnSign_Up.setOnAction(event -> handle_S_BtnSignUpAction(event));
 			btnCancel.setOnAction(event -> System.exit(0));
-			L_btnReset.setOnAction(event -> handleLBtnResetAction(event));
 			
-			S_btnIdCheck.setOnAction(event -> handleBtnIdCheckAction(event));
-			S_btnSave.setOnAction(event -> handleBtnSaveAction(event));
-			S_btnReset.setOnAction(event -> handleSBtnResetAction(event));
+			L_btnConnect.setOnAction(event -> handle_L_BtnConnectAction(event));
+			L_btnReset.setOnAction(event -> handle_L_BtnResetAction(event));
 			
-		} catch(Exception e) {}
+			S_btnIdCheck.setOnAction(event -> handle_S_BtnIdCheckAction(event));
+			S_btnSave.setOnAction(event -> handle_S_BtnSaveAction(event));
+			S_btnReset.setOnAction(event -> handle_S_BtnResetAction(event));
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/* Login Connection Event */
+	public void handle_L_BtnConnectAction(ActionEvent event) {
+		
+		try {
+			
+			SQLMapper sqlMapper = new SQLMapper();
+			User user = new User(L_txtUser.getText(), L_txtPassWD.getText(), "");
+			String db = sqlMapper.selectLogin(user);
+			
+			if(db.equals("")) {  
+				MSG("잘못된 정보를 입력하셨습니다. 다시 입력해주세요.", "경고"); 
+			}
+			else {
+				user.setDbName(db);
+				 MSG("[" + db + "] 접속 ..", "확인");
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	
 	/* DB Save Event */
-	public void handleBtnSaveAction(ActionEvent event) {
+	public void handle_S_BtnSaveAction(ActionEvent event) {
 		
 		User user = new User(S_txtUser.getText(), S_txtPassWD.getText(), S_txtDB.getText());
 		
@@ -82,7 +109,7 @@ public class MyController implements Initializable {
 	}
 	
 	/* User Overlap Check */
-	public void handleBtnIdCheckAction(ActionEvent event) {
+	public void handle_S_BtnIdCheckAction(ActionEvent event) {
 		
 		int result = new SQLMapper().selectIdCheck(S_txtUser.getText()); 
 		
@@ -100,23 +127,23 @@ public class MyController implements Initializable {
 	}
 	
 	/* Sign Up Panel Show Event */
-	public void handleBtnSignInAction(ActionEvent event) {
+	public void handle_S_BtnSignInAction(ActionEvent event) {
 		signupPane.setVisible(false);
 		loginPane.setVisible(true);
 	}
 	
 	/* Sign In Panel Show Event */
-	public void handleBtnSignUpAction(ActionEvent event) {
+	public void handle_S_BtnSignUpAction(ActionEvent event) {
 		loginPane.setVisible(false);
 		signupPane.setVisible(true);
 	}
 
-	public void handleLBtnResetAction(ActionEvent event) {
+	public void handle_L_BtnResetAction(ActionEvent event) {
 		L_txtUser.setText("");
 		L_txtPassWD.setText("");
 	}
 	
-	public void handleSBtnResetAction(ActionEvent event) {
+	public void handle_S_BtnResetAction(ActionEvent event) {
 		S_txtUser.setText("");
 		S_txtPassWD.setText("");
 		S_txtDB.setText("");

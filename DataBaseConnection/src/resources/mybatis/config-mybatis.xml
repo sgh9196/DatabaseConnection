@@ -37,7 +37,8 @@
 	<!-- 매퍼 스택 -->
 	<mappers>
 		<!-- 매퍼 -->
-		<mapper resource="resources/mybatis/XMLMapper.xml" />
+		<mapper resource="resources/mybatis/DBMapper.xml" />
+		<mapper resource="resources/mybatis/LoginMapper.xml" />
 	</mappers>
 	
 </configuration>

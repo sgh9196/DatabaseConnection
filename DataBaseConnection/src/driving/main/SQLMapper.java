@@ -19,7 +19,7 @@ public class SQLMapper {
 	
 	public SQLMapper() {
 		try {
-			/* 마이바티스 설정 XML 파일 경로 */
+			/* 마이바티스 설정 DB 파일 경로 */
 			Reader reader = Resources.getResourceAsReader(resource);
 			sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
 		} catch(IOException e) {
@@ -37,6 +37,7 @@ public class SQLMapper {
 		sqlSession.close();
 	}
 	
+	/* User Overlap Check */
 	public int selectIdCheck(String userName) {
 		
 		int resultSQL = 0;
@@ -44,7 +45,7 @@ public class SQLMapper {
 		try {
 			
 			transactionOpen();
-			resultSQL = sqlSession.selectOne(parameter + "XMLMapper.idCheckSelect", userName);
+			resultSQL = sqlSession.selectOne(parameter + "LoginMapper.idCheckSelect", userName);
 			transactionClose();
 			
 		} catch(Exception e) {
@@ -52,7 +53,7 @@ public class SQLMapper {
 		}
 		
 		return resultSQL;
-		
+
 	}
 	
 	/* Database Defualt Infomation Insert */
@@ -62,10 +63,10 @@ public class SQLMapper {
 			
 			transactionOpen();
 			
-			sqlSession.insert(parameter + "XMLMapper.userInsert",  user);
-			sqlSession.insert(parameter + "XMLMapper.dbInsert",  user);
-			sqlSession.update(parameter + "XMLMapper.authorityUpdate",  user);
-			sqlSession.update(parameter + "XMLMapper.dbUpdate");
+			sqlSession.insert(parameter + "DBMapper.userInsert",  user);
+			sqlSession.insert(parameter + "DBMapper.dbInsert",  user);
+			sqlSession.update(parameter + "DBMapper.authorityUpdate",  user);
+			sqlSession.update(parameter + "DBMapper.dbUpdate");
 			
 			sqlSession.commit();
 			
@@ -74,6 +75,29 @@ public class SQLMapper {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		
+	}
+	
+	/* User Login */
+	public String selectLogin(User user) {
+		
+		String db = "";
+		
+		try {
+			
+			transactionOpen();
+			
+			int count = sqlSession.selectOne(parameter + "LoginMapper.userSelect", user);
+			
+			if(count>0) { db = sqlSession.selectOne(parameter + "LoginMapper.userDBSelect", user); }
+			
+			transactionClose();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return db;
 		
 	}
 	

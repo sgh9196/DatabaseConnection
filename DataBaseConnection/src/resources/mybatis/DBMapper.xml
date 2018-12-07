@@ -3,8 +3,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="org.mybatis.persistence.XMLMapper">
-	
+<mapper namespace="org.mybatis.persistence.DBMapper">
 	
 	<insert id="userInsert" parameterType="user">
 		INSERT INTO user(host, user, password, ssl_cipher, x509_issuer, x509_subject, authentication_string)
@@ -23,9 +22,7 @@
 		FLUSH PRIVILEGES
 	</update>
 	
-	<select id="idCheckSelect" parameterType="string" resultType="int">
-		SELECT Count(*) FROM user WHERE User = #{userName}
-	</select>
+
 	
 	
 </mapper>
