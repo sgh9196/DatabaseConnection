@@ -28,4 +28,3 @@ public class Executor extends Application {
 	}
 	
 }
-

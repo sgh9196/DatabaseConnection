@@ -24,41 +24,23 @@ import javafx.stage.Stage;
 
 public class LoginController implements Initializable {
 
-	@FXML
-	private Button btnSign_In;
-	@FXML
-	private Button btnSign_Up;
-	@FXML
-	private Button btnCancel;
+	@FXML private Button btnSign_In;
+	@FXML private Button btnSign_Up;
+	@FXML private Button btnCancel;
+	@FXML private StackPane stackPane;
+	@FXML private BorderPane loginPane;
+	@FXML private TextField L_txtUser;
+	@FXML private TextField L_txtPassWD;
+	@FXML private Button L_btnConnect;
+	@FXML private Button L_btnReset;
 
-	@FXML
-	private StackPane stackPane;
-
-	@FXML
-	private BorderPane loginPane;
-	@FXML
-	private TextField L_txtUser;
-	@FXML
-	private TextField L_txtPassWD;
-	@FXML
-	private Button L_btnConnect;
-	@FXML
-	private Button L_btnReset;
-
-	@FXML
-	private BorderPane signupPane;
-	@FXML
-	private TextField S_txtUser;
-	@FXML
-	private TextField S_txtPassWD;
-	@FXML
-	private TextField S_txtDB;
-	@FXML
-	private Button S_btnIdCheck;
-	@FXML
-	private Button S_btnSave;
-	@FXML
-	private Button S_btnReset;
+	@FXML private BorderPane signupPane;
+	@FXML private TextField S_txtUser;
+	@FXML private TextField S_txtPassWD;
+	@FXML private TextField S_txtDB;
+	@FXML private Button S_btnIdCheck;
+	@FXML private Button S_btnSave;
+	@FXML private Button S_btnReset;
 
 	private boolean idCheck = false;
 
