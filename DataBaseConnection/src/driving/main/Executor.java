@@ -14,6 +14,7 @@ public class Executor extends Application {
 		Parent root = FXMLLoader.load(getClass().getResource("../../formLogin.fxml"));
 		Scene scene = new Scene(root);
 		
+		
 		primaryStage.setTitle("Login");
 		primaryStage.setResizable(false);
 		primaryStage.setScene(scene);

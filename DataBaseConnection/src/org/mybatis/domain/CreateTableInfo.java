@@ -11,6 +11,7 @@ public class CreateTableInfo {
 		this.dataType = dataType;
 		this.primaryKey = primaryKey;
 	}
+	
 	public String getColumnName() { return columnName; }
 	public void setColumnName(String columnName) { this.columnName = columnName; }
 	

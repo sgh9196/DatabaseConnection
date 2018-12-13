@@ -24,15 +24,10 @@ import javafx.stage.Stage;
 
 public class LoginController implements Initializable {
 
-	@FXML private Button btnSign_In;
 	@FXML private Button btnSign_Up;
 	@FXML private Button btnCancel;
 	@FXML private StackPane stackPane;
-	@FXML private BorderPane loginPane;
-	@FXML private TextField L_txtUser;
-	@FXML private TextField L_txtPassWD;
-	@FXML private Button L_btnConnect;
-	@FXML private Button L_btnReset;
+
 
 	@FXML private BorderPane signupPane;
 	@FXML private TextField S_txtUser;
@@ -49,12 +44,9 @@ public class LoginController implements Initializable {
 
 		try {
 
-			btnSign_In.setOnAction(event -> handle_S_BtnSignInAction(event));
+
 			btnSign_Up.setOnAction(event -> handle_S_BtnSignUpAction(event));
 			btnCancel.setOnAction(event -> System.exit(0));
-
-			L_btnConnect.setOnAction(event -> handle_L_BtnConnectAction(event));
-			L_btnReset.setOnAction(event -> handle_L_BtnResetAction(event));
 
 			S_btnIdCheck.setOnAction(event -> handle_S_BtnIdCheckAction(event));
 			S_btnSave.setOnAction(event -> handle_S_BtnSaveAction(event));
@@ -64,37 +56,15 @@ public class LoginController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-
-	/* Login Connection Event */
-	public void handle_L_BtnConnectAction(ActionEvent event) {
-
-		try {
-
-			SQLMapper sqlMapper = new SQLMapper();
-			User user = new User(L_txtUser.getText(), L_txtPassWD.getText(), "");
-			String db = sqlMapper.selectLogin(user);
-
-			if (db.equals("")) {
-				MSG("잘못된 정보를 입력하셨습니다. 다시 입력해주세요.", "경고");
-			} else {
-				user.setDbName(db);
-				MSG("[" + db + "] 접속 ..", "확인");
-				showStage();
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
 	
 	/* 새로운 fxml Load */
 	public void showStage() throws IOException {
 		
-		Parent p = FXMLLoader.load(getClass().getResource("../../formCreate.fxml"));
+		Parent p = FXMLLoader.load(getClass().getResource("../../formDialog.fxml"));
 		
 		Stage stage = new Stage();
 		Scene scene = new Scene(p);
+		
 		
 		stage.setTitle("Create");
 		stage.setResizable(false);
@@ -144,21 +114,15 @@ public class LoginController implements Initializable {
 	/* Sign Up Panel Show Event */
 	public void handle_S_BtnSignInAction(ActionEvent event) {
 		signupPane.setVisible(false);
-		loginPane.setVisible(true);
 	}
 
 	/* Sign In Panel Show Event */
 	public void handle_S_BtnSignUpAction(ActionEvent event) {
-		loginPane.setVisible(false);
 		signupPane.setVisible(true);
 	}
 
-	public void handle_L_BtnResetAction(ActionEvent event) {
-		L_txtUser.setText("");
-		L_txtPassWD.setText("");
-	}
-
 	public void handle_S_BtnResetAction(ActionEvent event) {
+		S_txtUser.setDisable(false);
 		S_txtUser.setText("");
 		S_txtPassWD.setText("");
 		S_txtDB.setText("");

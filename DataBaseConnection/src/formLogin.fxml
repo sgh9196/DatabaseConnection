@@ -14,7 +14,6 @@
                <children>
                   <VBox alignment="CENTER" layoutY="-5.0" prefHeight="219.0" prefWidth="91.0" spacing="10.0">
                      <children>
-                        <Button fx:id="btnSign_In" mnemonicParsing="false" prefHeight="37.0" prefWidth="68.0" text="Sign In" />
                         <Button fx:id="btnSign_Up" mnemonicParsing="false" prefHeight="37.0" prefWidth="68.0" text="Sign Up" />
                         <Button fx:id="btnCancel" mnemonicParsing="false" prefHeight="37.0" prefWidth="68.0" text="Cancel" />
                      </children>
@@ -23,7 +22,7 @@
             </AnchorPane>
             <StackPane fx:id="stackPane" prefHeight="209.0" prefWidth="115.0">
                <children>
-                  <BorderPane fx:id="signupPane" prefHeight="209.0" prefWidth="119.0" visible="false">
+                  <BorderPane fx:id="signupPane" prefHeight="209.0" prefWidth="119.0">
                      <bottom>
                         <HBox alignment="CENTER" prefHeight="39.0" prefWidth="180.0" spacing="20.0" BorderPane.alignment="CENTER">
                            <children>
@@ -53,37 +52,6 @@
                         <AnchorPane prefHeight="33.0" prefWidth="180.0" BorderPane.alignment="CENTER">
                            <children>
                               <Label layoutX="69.0" layoutY="1.0" text="Sign Up">
-                                 <font>
-                                    <Font name="Gigi" size="17.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </AnchorPane>
-                     </top>
-                  </BorderPane>
-                  <BorderPane fx:id="loginPane" prefHeight="200.0" prefWidth="180.0">
-                     <bottom>
-                        <HBox alignment="CENTER" prefHeight="39.0" prefWidth="180.0" spacing="20.0" BorderPane.alignment="CENTER">
-                           <children>
-                              <Button fx:id="L_btnConnect" mnemonicParsing="false" prefHeight="26.0" prefWidth="76.0" text="Connect" />
-                              <Button fx:id="L_btnReset" mnemonicParsing="false" prefHeight="23.0" prefWidth="76.0" text="Reset" />
-                           </children>
-                        </HBox>
-                     </bottom>
-                     <center>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                           <children>
-                              <Label layoutX="24.0" layoutY="42.0" text="User" />
-                              <Label layoutX="15.0" layoutY="78.0" text="PassWD" />
-                              <TextField fx:id="L_txtUser" layoutX="68.0" layoutY="38.0" prefHeight="23.0" prefWidth="110.0" />
-                              <TextField fx:id="L_txtPassWD" layoutX="68.0" layoutY="74.0" prefHeight="23.0" prefWidth="110.0" />
-                           </children>
-                        </AnchorPane>
-                     </center>
-                     <top>
-                        <AnchorPane prefHeight="33.0" prefWidth="180.0" BorderPane.alignment="CENTER">
-                           <children>
-                              <Label layoutX="69.0" layoutY="1.0" text="Login">
                                  <font>
                                     <Font name="Gigi" size="17.0" />
                                  </font>
